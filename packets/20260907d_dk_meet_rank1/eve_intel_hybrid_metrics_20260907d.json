@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-07",
+  "label": "2026-09-07d_dk_family_meet_rank1",
+  "claim_labels": {
+    "meet_rank1_third_plane_arithmetic": "VERIFIED",
+    "davis_kahan_controlled_family": "VERIFIED",
+    "davis_kahan_general_theorem": "BLOCKED",
+    "greechie_pentagon_hilbert_lattice_embedding": "BLOCKED",
+    "lock_smallest_manual_closure": "BLOCKED",
+    "real_text_encoder": "BLOCKED",
+    "hormuz_identified_with_fragment": "BLOCKED",
+    "drive_file_upload_this_runtime": "BLOCKED"
+  },
+  "meet_rank1": {
+    "rank_R0": 2,
+    "rank_R2": 2,
+    "rank_meet": 1,
+    "rank_join": 3,
+    "principal_angles": [0.0, 1.5707963267948966],
+    "chordal": 1.0,
+    "frobenius_gap2": 2.0,
+    "hook_equals_R0perp": false,
+    "hook_equals_R0perp_join_meet": true,
+    "sasaki_projection_equals_meet": true,
+    "meet_equals_X0": true
+  },
+  "dk_family": {
+    "gap_delta": 1.0,
+    "E_frobenius": 0.7071067811865476,
+    "E_op": 0.5,
+    "rows": [
+      {"eps": 0.00, "sinTheta_F": 0.0, "bound_F": 0.0, "bound_op": 0.0, "holds_F": true, "holds_op": true},
+      {"eps": 0.05, "sinTheta_F": 0.024977, "bound_F": 0.035355, "bound_op": 0.025000, "holds_F": true, "holds_op": true},
+      {"eps": 0.10, "sinTheta_F": 0.049814, "bound_F": 0.070711, "bound_op": 0.050000, "holds_F": true, "holds_op": true},
+      {"eps": 0.15, "sinTheta_F": 0.074376, "bound_F": 0.106066, "bound_op": 0.075000, "holds_F": true, "holds_op": true},
+      {"eps": 0.20, "sinTheta_F": 0.098538, "bound_F": 0.141421, "bound_op": 0.100000, "holds_F": true, "holds_op": true}
+    ],
+    "all_family_holds_F": true,
+    "all_family_holds_op": true
+  }
+}
