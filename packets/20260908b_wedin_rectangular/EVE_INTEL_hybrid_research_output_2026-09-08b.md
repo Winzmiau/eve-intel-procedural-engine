@@ -1,0 +1,1 @@
+Afternoon 2026-09-08 packet. Graph 27 nodes / 175 edges. Wedin ε=0.05 combined sine 0.038412 ≤ 0.058429. all_geometry_idents_ok=True. Drive: https://drive.google.com/drive/folders/1bTaZhrMuDB8gKru3ZhMXyf6XGb2UZkKr Inbox: https://drive.google.com/file/d/1DFsEcWTGd0_GnuGnn2IqZNKf6lO1-sgD/view
