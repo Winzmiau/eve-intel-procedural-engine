@@ -1,0 +1,1 @@
+See Drive INBOX-058. Family ε=0.05: L_rect=3.7076 pref=11.8018; L_circ=9.8962 pref=31.5007; L_stad=3.4314 pref=10.9224. All cert True. Stadium tighter than rectangle on the operational family and on Grcar-16.
