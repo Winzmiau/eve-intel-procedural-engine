@@ -1,0 +1,1 @@
+INBOX-066 circumradius P_out dual to INBOX-065 Chebyshev. FAM05 R_out=0.759520=diam/2. Grcar-16 R_out=2.955664.
