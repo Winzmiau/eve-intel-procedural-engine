@@ -1,0 +1,14 @@
+{
+  "label": "2026-09-26c_sasaki_svdmeet_agentic",
+  "idents_ok": true,
+  "failed_idents": [],
+  "adjunction": "343/343",
+  "n_nodes": 4,
+  "n_edges": 12,
+  "rel_counts": {"P": 2, "S": 2, "or": 8, "and": 0},
+  "pagerank": {"collector": 0.2459601144475813, "analyst": 0.2540398855524187, "skeptic": 0.2540398855524187, "coordinator": 0.2459601144475813},
+  "hubs": ["analyst", "skeptic", "collector", "coordinator"],
+  "decision": {"src": "collector", "dst": "skeptic", "rel": "or", "sasaki_strength": 1.0, "lattice_coherence": 0.5, "rank_hook": 15.0},
+  "n_osint": 3,
+  "cite_nodes": 110
+}
