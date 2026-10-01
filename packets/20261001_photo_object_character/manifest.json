@@ -1,0 +1,223 @@
+{
+  "chain_id": "eve-photo-object-character-2026-10-01",
+  "capsule_content_sha256": "d9ce9afa540ca8c71d3cc84025358f2fdf76afdf6c25c22913e199ce321f93ea",
+  "capsule_file_sha256": "424b816becb6763c39518eac5530d646fc73e21246fb44d9d84f5096d88e01e7",
+  "tests": {
+    "unit": {
+      "checks": [
+        {
+          "name": "slug",
+          "pass": true,
+          "detail": "donald-trump"
+        },
+        {
+          "name": "mime-jpeg",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "mime-png",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "mime-webp",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "mime-default",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "tier3",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "tier2",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "tier1",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "tier4",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "face-rect",
+          "pass": true,
+          "detail": "{'left': 80, 'top': 60, 'width': 120, 'height': 120, 'mode': 'ssd_mobilenet_v1', 'min_confidence': 0.3, 'padding': 0.25, 'score': 0.9}"
+        },
+        {
+          "name": "face-clamp",
+          "pass": true,
+          "detail": "{'left': 0, 'top': 0, 'width': 50, 'height': 50, 'mode': 'ssd_mobilenet_v1', 'min_confidence': 0.3, 'padding': 0.25, 'score': 0.5}"
+        },
+        {
+          "name": "fallback-mode",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "fallback-inside",
+          "pass": true,
+          "detail": "{'left': 1, 'top': 3, 'width': 6, 'height': 7, 'mode': 'alpha_bbox_fallback', 'head_ratio': 0.45, 'figure': {'x': 2, 'y': 4, 'w': 3, 'h': 11}}"
+        },
+        {
+          "name": "trim",
+          "pass": true,
+          "detail": "{'left': 1, 'top': 1, 'width': 2, 'height': 2, 'content': {'w': 2, 'h': 2}}"
+        },
+        {
+          "name": "contain",
+          "pass": true,
+          "detail": "{'width': 200, 'height': 150, 'offset_x': 0, 'offset_y': 75, 'scale': 0.5}"
+        },
+        {
+          "name": "sheet",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "meshy-payload",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "poll",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "rig-human",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "text-stages",
+          "pass": true,
+          "detail": ""
+        }
+      ],
+      "count": 20,
+      "failed": 0
+    },
+    "scenarios": {
+      "scenarios": [
+        {
+          "name": "2d-operator-photos",
+          "pass": true,
+          "status": "SUCCESS",
+          "via": "photo_composite_2d",
+          "expect": "SUCCESS"
+        },
+        {
+          "name": "2d-no-photo-held",
+          "pass": true,
+          "status": "SUCCESS",
+          "via": "fallback_library",
+          "expect": "SUCCESS"
+        },
+        {
+          "name": "3d-character-plan",
+          "pass": true,
+          "status": "SUCCESS",
+          "via": "image_to_3d_character",
+          "expect": "SUCCESS"
+        },
+        {
+          "name": "3d-no-key-fallback",
+          "pass": true,
+          "status": "SUCCESS",
+          "via": "fallback_library",
+          "expect": "SUCCESS"
+        },
+        {
+          "name": "prop",
+          "pass": true,
+          "status": "SUCCESS",
+          "via": "image_to_3d_prop",
+          "expect": "SUCCESS"
+        },
+        {
+          "name": "world",
+          "pass": true,
+          "status": "SUCCESS",
+          "via": "world_from_photo",
+          "expect": "SUCCESS"
+        },
+        {
+          "name": "lore-negative",
+          "pass": true,
+          "status": "SUCCESS",
+          "via": "not_loreweaver",
+          "expect": "SUCCESS"
+        },
+        {
+          "name": "held-leaf-visible",
+          "pass": true,
+          "status": "SUCCESS",
+          "via": [
+            "hold_web_search",
+            "photo_composite_2d"
+          ],
+          "expect": [
+            "hold_web_search"
+          ]
+        }
+      ],
+      "count": 8,
+      "failed": 0
+    },
+    "demo_crop": {
+      "left": 80,
+      "top": 60,
+      "width": 120,
+      "height": 120,
+      "mode": "ssd_mobilenet_v1",
+      "min_confidence": 0.3,
+      "padding": 0.25,
+      "score": 0.91
+    },
+    "demo_status": "SUCCESS",
+    "bm25_top": [
+      {
+        "id": "gc-photo-composite-orchestrator",
+        "score": 6.1146
+      },
+      {
+        "id": "gc-face-crop",
+        "score": 5.5077
+      },
+      {
+        "id": "correction-s44",
+        "score": 5.2602
+      },
+      {
+        "id": "catalog-saas",
+        "score": 4.311
+      },
+      {
+        "id": "gc-worldlabs",
+        "score": 2.2122
+      }
+    ]
+  },
+  "files": [
+    "assemble.py",
+    "bt/README.md",
+    "bt/photo_to_embodiment.bt.json",
+    "okf/eve_photo_object_character_2026_10_01.okf-c.json",
+    "store/bm25.json",
+    "store/cards.jsonl",
+    "store/knowledge_store.sqlite3",
+    "wiki/photo_to_object_character.md"
+  ]
+}

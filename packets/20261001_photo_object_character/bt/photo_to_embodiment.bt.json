@@ -1,0 +1,227 @@
+{
+  "id": "photo_to_embodiment",
+  "version": "1.0.0",
+  "source": {
+    "owner": "Anil-matcha",
+    "sha": "4e64b83b5fe400b34ad3a484d9b4a6090b26d512",
+    "committed": "2026-05-25T14:02:21-04:00",
+    "license_note": "README declares MIT. A raw LICENSE fetch at this SHA returned HTTP 404; do not treat the badge as a copied license file.",
+    "role": "executable donor for photo-composite characters and image/text-to-3D objects"
+  },
+  "semantics": "selector = first SUCCESS child; sequence = all children SUCCESS; a HELD leaf is not SUCCESS",
+  "policy": {
+    "likeness_web_fetch": "HELD",
+    "reason": "Donor skill searches the web for named people's photographs. This reconstruction keeps that node in the tree and does not execute it. Operator-supplied image paths are the only photo inputs the runner accepts."
+  },
+  "root": {
+    "type": "selector",
+    "id": "route",
+    "children": [
+      {
+        "type": "sequence",
+        "id": "photo_composite_2d",
+        "title": "Named or photo character for a 2D Phaser game",
+        "children": [
+          {
+            "type": "condition",
+            "id": "want_2d_character",
+            "predicate": "blackboard.route == 'character_2d'"
+          },
+          {
+            "type": "action",
+            "id": "library_lookup",
+            "summary": "If assets/characters manifest already has the slug, copy sprites and stop."
+          },
+          {
+            "type": "action",
+            "id": "hold_web_search",
+            "summary": "SOURCE node: WebSearch four expression photos of a named person. HELD unless the operator already supplied files.",
+            "held": true
+          },
+          {
+            "type": "action",
+            "id": "tier_select",
+            "summary": "fill_expression_slots over operator-supplied raw/{normal,happy,angry,surprised}.*"
+          },
+          {
+            "type": "action",
+            "id": "bg_remove",
+            "summary": "For each new raw file: MIME from magic bytes; @imgly/background-removal-node model=medium output=foreground PNG."
+          },
+          {
+            "type": "action",
+            "id": "face_crop",
+            "summary": "SSD MobileNet v1 minConfidence 0.3, pad 0.25. Else alpha>10 bbox, head_ratio 0.45, then trim pad 0.05."
+          },
+          {
+            "type": "action",
+            "id": "spritesheet",
+            "summary": "800x300 PNG, frames 200x300, order normal|happy|angry|surprised, sharp fit=contain."
+          },
+          {
+            "type": "action",
+            "id": "bobblehead",
+            "summary": "Phaser Container: arms, Graphics body from unit U, head sprite on top. Never a floating head."
+          },
+          {
+            "type": "action",
+            "id": "wire_expressions",
+            "summary": "EXPRESSION 0..3, hold 600ms, EventBus PLAYER_DAMAGED\u2192ANGRY, SCORE_CHANGED\u2192HAPPY."
+          }
+        ]
+      },
+      {
+        "type": "sequence",
+        "id": "image_to_3d_character",
+        "title": "Humanoid from a reference image",
+        "children": [
+          {
+            "type": "condition",
+            "id": "want_3d_character",
+            "predicate": "blackboard.route == 'character_3d'"
+          },
+          {
+            "type": "condition",
+            "id": "have_meshy_key",
+            "predicate": "blackboard.meshy_key == true"
+          },
+          {
+            "type": "action",
+            "id": "image_to_3d",
+            "summary": "POST /v1/image-to-3d should_texture=true. Local file \u2192 base64 data URI. Poll 5s, max 360."
+          },
+          {
+            "type": "action",
+            "id": "rig",
+            "summary": "POST /v1/rigging height_meters default 1.7. Download rigged GLB plus walking and running."
+          },
+          {
+            "type": "action",
+            "id": "optimize",
+            "summary": "resize textures to 1024, gltf-transform dedup/prune/weld, meshopt, webp. Skip if CLI missing."
+          },
+          {
+            "type": "action",
+            "id": "verify_integrate",
+            "summary": "log bbox, rotationY often Math.PI, feet on -min.y, SkeletonUtils.clone, fadeToAction, mixer.update."
+          }
+        ]
+      },
+      {
+        "type": "sequence",
+        "id": "image_to_3d_prop",
+        "title": "Single object, no rig",
+        "children": [
+          {
+            "type": "condition",
+            "id": "want_prop",
+            "predicate": "blackboard.route == 'prop_3d'"
+          },
+          {
+            "type": "condition",
+            "id": "have_meshy_key",
+            "predicate": "blackboard.meshy_key == true"
+          },
+          {
+            "type": "action",
+            "id": "image_or_text_to_3d",
+            "summary": "Image route if a photo exists, else text preview\u2192refine. One object per prompt."
+          },
+          {
+            "type": "action",
+            "id": "skip_rig",
+            "summary": "Props, vehicles, buildings are not rigged."
+          },
+          {
+            "type": "action",
+            "id": "optimize_static",
+            "summary": "Same GLB optimize. Integrate with scene.clone(true), not SkeletonUtils."
+          }
+        ]
+      },
+      {
+        "type": "sequence",
+        "id": "world_from_photo",
+        "title": "Environment, not a character",
+        "children": [
+          {
+            "type": "condition",
+            "id": "want_world",
+            "predicate": "blackboard.route == 'world'"
+          },
+          {
+            "type": "condition",
+            "id": "have_worldlabs_key",
+            "predicate": "blackboard.worldlabs_key == true"
+          },
+          {
+            "type": "action",
+            "id": "image_first",
+            "summary": "Ask for a reference image before text. POST Marble image mode."
+          },
+          {
+            "type": "action",
+            "id": "download_tiers",
+            "summary": "full, 500k, 100k SPZ + collider GLB + panorama + meta."
+          },
+          {
+            "type": "action",
+            "id": "spark_integrate",
+            "summary": "SparkRenderer before SplatMesh; three@^0.180; antialias false; Y-flip and upward raycast."
+          }
+        ]
+      },
+      {
+        "type": "sequence",
+        "id": "pixel_from_reference",
+        "title": "2D sprite, not a photo composite",
+        "children": [
+          {
+            "type": "condition",
+            "id": "want_pixel",
+            "predicate": "blackboard.route == 'pixel_sprite'"
+          },
+          {
+            "type": "condition",
+            "id": "have_rd_key",
+            "predicate": "blackboard.retrodiffusion_key == true"
+          },
+          {
+            "type": "action",
+            "id": "img2img_or_generate",
+            "summary": "retrodiffusion-generate.mjs. img2img strength 0.5-0.8. Paid. pixelArt:true in Phaser."
+          }
+        ]
+      },
+      {
+        "type": "sequence",
+        "id": "not_loreweaver",
+        "title": "Reject the wrong donor",
+        "children": [
+          {
+            "type": "condition",
+            "id": "route_is_lore",
+            "predicate": "blackboard.route == 'lore_handout'"
+          },
+          {
+            "type": "action",
+            "id": "prompt_handout_only",
+            "summary": "Loreweaver generate_image(prompt, kind) is not photo-conditioned and does not emit a mesh."
+          }
+        ]
+      },
+      {
+        "type": "sequence",
+        "id": "fallback_library",
+        "title": "No paid key",
+        "children": [
+          {
+            "type": "action",
+            "id": "tier_fallback",
+            "summary": "3D: assets/3d-characters manifest, then Sketchfab/Poly Haven/Poly.pizza, then BoxGeometry. 2D: hand-coded matrices."
+          }
+        ]
+      }
+    ]
+  }
+}

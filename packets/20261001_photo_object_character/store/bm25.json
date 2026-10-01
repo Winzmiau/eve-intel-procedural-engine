@@ -1,0 +1,66 @@
+[
+  {
+    "id": "gc-photo-composite-orchestrator",
+    "score": 6.1146
+  },
+  {
+    "id": "gc-face-crop",
+    "score": 5.5077
+  },
+  {
+    "id": "correction-s44",
+    "score": 5.2602
+  },
+  {
+    "id": "catalog-saas",
+    "score": 4.311
+  },
+  {
+    "id": "gc-worldlabs",
+    "score": 2.2122
+  },
+  {
+    "id": "lw-not-photo-mesh",
+    "score": 2.1159
+  },
+  {
+    "id": "gc-retrodiffusion",
+    "score": 0.8666
+  },
+  {
+    "id": "gc-tier-fallback",
+    "score": 0.8279
+  },
+  {
+    "id": "catalog-astra",
+    "score": 0.0
+  },
+  {
+    "id": "catalog-awesome-game",
+    "score": 0.0
+  },
+  {
+    "id": "gc-bg-removal",
+    "score": 0.0
+  },
+  {
+    "id": "gc-expression-contract",
+    "score": 0.0
+  },
+  {
+    "id": "gc-glb-optimize",
+    "score": 0.0
+  },
+  {
+    "id": "gc-meshy-image-to-3d",
+    "score": 0.0
+  },
+  {
+    "id": "gc-provenance-split",
+    "score": 0.0
+  },
+  {
+    "id": "gc-rig-gate",
+    "score": 0.0
+  }
+]
